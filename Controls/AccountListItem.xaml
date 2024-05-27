@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PasswordManager.Controls.AccountListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PasswordManager.Controls"
+             mc:Ignorable="d" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+             d:DesignHeight="70" d:DesignWidth="600">
+    <Grid Background="#FF191818">
+        <Label Content="{Binding AccountName}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="350" Margin="5,5,250,0"/>
+        <Label Content="{Binding EmailAdress}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="350" Margin="5,36,250,0"/>
+        <Button Uid="3" Click="ButtonsClicked" Content="   View&#xA;Contents" HorizontalAlignment="Right" Margin="0,5,5,5" Width="75" Height="60" Background="#FF202020" Foreground="White"/>
+        <Button Uid="2" Click="ButtonsClicked" Content="   Copy&#xA;Password" HorizontalAlignment="Right" Margin="0,5,85,5" Width="75" Height="60" Background="#FF202020" Foreground="White"/>
+        <Button Uid="1" Click="ButtonsClicked" Content="Copy&#xA;Email" HorizontalAlignment="Right" Margin="0,5,165,5" VerticalAlignment="Center" Width="75" Height="60" Background="#FF202020" Foreground="White"/>
+    </Grid>
+</UserControl>
