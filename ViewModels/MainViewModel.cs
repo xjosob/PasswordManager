@@ -12,15 +12,12 @@ namespace PasswordManager.ViewModels
         private ObservableCollection<AccountListItem> _items = new ObservableCollection<AccountListItem>();
         public ObservableCollection<AccountListItem> Accounts { get => _items; set { _items = value; RaisePropertyChanged(); } }
 
-        private int _selectedIndex = -1;
+        private int _selectedIndex;
         public int SelectedIndex
         {
-            get => _selectedIndex;
-            set
+            get => _selectedIndex; set
             {
-                _selectedIndex = value;
-                RaisePropertyChanged();
-                RaisePropertyChanged(nameof(AccountSelected));
+                _selectedIndex = value; RaisePropertyChanged();
             }
         }
 
@@ -57,12 +54,14 @@ namespace PasswordManager.ViewModels
         public ICommand AddAccountCommand { get; set; }
         public ICommand EditAccountCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
+        public ICommand ShowAccountInfoCommand { get; set; }
 
         public MainViewModel()
         {
             AddAccountCommand = new Command(ShowAddAccountWindow);
-            EditAccountCommand = new Command(EditAccount);
+            EditAccountCommand = new Command(ShowEditAccountWindow);
             DeleteAccountCommand = new Command(DeleteAccount);
+            ShowAccountInfoCommand = new Command(ShowAccContentWindow);
             
 
             NewAccountWindow = new AddAccountWindow();
@@ -72,7 +71,7 @@ namespace PasswordManager.ViewModels
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
 
-        private void ShowAccContent()
+        private void ShowAccContentWindow()
         {
             if (AccountSelected)
             {
@@ -94,7 +93,8 @@ namespace PasswordManager.ViewModels
         {
             AccountListItem ali = new AccountListItem();
             ali.DataContext = acc;
-            ali.ShowContentWindowCallback = ShowAccContent;
+            ali.ShowContentWindowCallback = ShowAccContentWindow;
+
             Accounts.Add(ali);
         }
 
@@ -104,7 +104,8 @@ namespace PasswordManager.ViewModels
         {
             if (SelectedAccountStructure != null)
             {
-                ShowEditAccountWindow();
+                SetEditWndContext();
+                EditAccountWindow.Show();
             }
         }
 
