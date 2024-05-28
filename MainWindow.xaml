@@ -22,6 +22,7 @@
                 <Button Content="Add Account" Command="{Binding AddAccountCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" FontSize="18"/>
                 <Button Content="Edit Account" Command="{Binding EditAccountCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="0,75,0,0" FontSize="18"/>
                 <Button Content="Delete Account" Command="{Binding DeleteAccountCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="0,150,0,0" FontSize="18"/>
+                <Button Content="Show Account Info" Command="{Binding ShowAccountInfoCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="0,225,0,0" FontSize="18"/>
             </Grid>
         </Grid>
 

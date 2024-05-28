@@ -20,7 +20,7 @@ namespace PasswordManager.ViewModels
             {
                 _selectedIndex = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged(nameof(AccountSelected)); // Notify that AccountSelected may have changed
+                RaisePropertyChanged(nameof(AccountSelected));
             }
         }
 
