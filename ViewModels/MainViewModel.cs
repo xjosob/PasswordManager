@@ -56,12 +56,17 @@ namespace PasswordManager.ViewModels
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ShowAccountInfoCommand { get; set; }
 
+        public ICommand SaveAccountsCommand { get; set; }
+        public ICommand LoadAccountsCommand { get; set; }
+
         public MainViewModel()
         {
             AddAccountCommand = new Command(ShowAddAccountWindow);
             EditAccountCommand = new Command(ShowEditAccountWindow);
             DeleteAccountCommand = new Command(DeleteAccount);
             ShowAccountInfoCommand = new Command(ShowAccContentWindow);
+            SaveAccountsCommand = new Command(SaveAccounts);
+            LoadAccountsCommand = new Command(LoadAccounts)
             
 
             NewAccountWindow = new AddAccountWindow();
@@ -70,6 +75,9 @@ namespace PasswordManager.ViewModels
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
+
+        private void SaveAccounts() { }
+        private void LoadAccounts() { }
 
         private void ShowAccContentWindow()
         {
