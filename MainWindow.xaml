@@ -23,9 +23,9 @@
                 <Button Content="Edit Account" Command="{Binding EditAccountCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="2,82,5,0" FontSize="18" BorderBrush="#FF202020"/>
                 <Button Content="Delete Account" Command="{Binding DeleteAccountCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="2,162,5,0" FontSize="18" BorderBrush="#FF202020"/>
                 <Button Content="Show Account Info" Command="{Binding ShowAccountInfoCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="4,242,5,0" FontSize="18" BorderBrush="#FF202020"/>
-                <Separator VerticalAlignment="Top" Height="1" Margin="0,477,0,0" Background="#FF484242"/>
-                <Button Content=" Load Accounts" Command="{Binding LoadAccountsCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="0,500,5,0" FontSize="18" BorderBrush="#FF202020"/>
-                <Button Content=" Save Accounts" Command="{Binding SaveAccountsCommand}" VerticalAlignment="Top" Height="75" Background="#FF202020" Foreground="White" Margin="0,580,5,0" FontSize="18" BorderBrush="#FF202020"/>
+                <Separator VerticalAlignment="Bottom" Height="1" Margin="-2,330,2,180" Background="#FF484242"/>
+                <Button Content=" Load Accounts" Command="{Binding LoadAccountsCommand}" VerticalAlignment="Bottom" Height="75" Background="#FF202020" Foreground="White" Margin="4,0,5,5" FontSize="18" BorderBrush="#FF202020"/>
+                <Button Content=" Save Accounts" Command="{Binding SaveAccountsCommand}" VerticalAlignment="Bottom" Height="75" Background="#FF202020" Foreground="White" Margin="4,0,5,85" FontSize="18" BorderBrush="#FF202020"/>
             </Grid>
         </Grid>
 
