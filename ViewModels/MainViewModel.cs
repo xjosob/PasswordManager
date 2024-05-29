@@ -3,6 +3,7 @@ using PasswordManager.Controls;
 using PasswordManager.Utilities;
 using PasswordManager.Views;
 using System.Collections.ObjectModel;
+using System.Reflection.Metadata;
 using System.Windows.Input;
 
 namespace PasswordManager.ViewModels
@@ -80,7 +81,7 @@ namespace PasswordManager.ViewModels
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
 
-        private void MoveSelectedAccountPosition(object upOrDown)
+        private void MoveSelectedAccountPosition(Parameter upOrDown)
         {
             switch (int.Parse(upOrDown.ToString()))
             {

@@ -26,5 +26,10 @@ namespace PasswordManager
             e.Cancel = true;
             Environment.Exit(0);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
