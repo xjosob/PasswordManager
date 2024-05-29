@@ -78,8 +78,25 @@ namespace PasswordManager.ViewModels
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
 
-        private void SaveAccounts() { AccountDatabase.AccountSaver.SaveFiles(Accounts); }
-        private void LoadAccounts() { }
+        private void SaveAccounts() 
+        {
+            List<AccountStructure> accs = new List<AccountStructure>();
+            foreach (AccountListItem acc in Accounts)
+            {
+                
+                AccountStructure accStr = acc.DataContext as AccountStructure;
+                accs.Add(accStr);
+            }
+
+            AccountDatabase.AccountSaver.SaveFiles(accs);
+        }
+        private void LoadAccounts() 
+        {
+            foreach(var it in AccountDatabase.AccountLoader.LoadFiles())
+            {
+                AddAccount(it);
+            }
+        }
 
         private void ShowAccContentWindow()
         {
