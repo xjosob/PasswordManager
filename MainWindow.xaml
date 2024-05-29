@@ -12,7 +12,7 @@
     </Window.DataContext>
 
     <Grid>
-        <Grid VerticalAlignment="Top" Height="75" Margin="205,0,0,0" Background="#FF202020">
+        <Grid VerticalAlignment="Top" Height="75" Margin="205,0,0,0" Background="#FF191818">
             <Label Content="Accounts List" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24"/>
         </Grid>
 
@@ -34,6 +34,12 @@
                      SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Stretch"/>
+        </Grid>
+        <Grid VerticalAlignment="Top" Height="73" Margin="210,656,0,0" Background="#FF1C1C1C">
+            <Button Command="{Binding MoveAccountPostCommand}" CommandParameter="0" Content="Up" HorizontalAlignment="Left" Margin="206,10,0,0" VerticalAlignment="Top" Width="110" Height="27" Background="#FF202020" Foreground="White" BorderBrush="#FF202020"/>
+            <Button Command="{Binding MoveAccountPostCommand}" CommandParameter="1" Content="Down" HorizontalAlignment="Left" Margin="206,37,0,0" VerticalAlignment="Top" Width="110" Height="27" Background="#FF202020" Foreground="White" BorderBrush="#FF202020"/>
+            <TextBlock TextWrapping="Wrap" Text="Move Selected Acocunt Position" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Height="45" Width="147" Margin="44,0,0,0" FontSize="16"/>
+
         </Grid>
     </Grid>
 </Window>

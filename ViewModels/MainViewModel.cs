@@ -55,6 +55,7 @@ namespace PasswordManager.ViewModels
         public ICommand EditAccountCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
         public ICommand ShowAccountInfoCommand { get; set; }
+        public ICommand MoveAccountPostCommand { get; set; }
 
         public ICommand SaveAccountsCommand { get; set; }
         public ICommand LoadAccountsCommand { get; set; }
@@ -67,6 +68,7 @@ namespace PasswordManager.ViewModels
             ShowAccountInfoCommand = new Command(ShowAccContentWindow);
             SaveAccountsCommand = new Command(SaveAccounts);
             LoadAccountsCommand = new Command(LoadAccounts);
+            MoveAccountPostCommand = new CommandParam(MoveSelectedAccountPosition);
             
 
             NewAccountWindow = new AddAccountWindow();
@@ -76,6 +78,25 @@ namespace PasswordManager.ViewModels
             AccountDatabase.createdirthing();
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
+        }
+
+        private void MoveSelectedAccountPosition(object upOrDown)
+        {
+            switch (int.Parse(upOrDown.ToString()))
+            {
+                case 0:
+                    if(SelectedIndex > 0)
+                    {
+                        Accounts.Move(SelectedIndex, SelectedIndex - 1);
+                    }
+                    break;
+                case 1:
+                    if(SelectedIndex + 1 < Accounts.Count)
+                    {
+                        Accounts.Move(SelectedIndex, SelectedIndex + 1);
+                    }
+                    break;
+            }
         }
 
         private void SaveAccounts() 
