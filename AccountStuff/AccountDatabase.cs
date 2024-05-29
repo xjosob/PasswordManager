@@ -23,7 +23,7 @@ namespace PasswordManager.AccountStuff
         public static string ExtrIn4Name = "extrin4.txt";
         public static string ExtrIn5Name = "extrin5.txt";
 
-        private static void createdirthing()
+        public static void createdirthing()
         {
             File.Create(Path.Combine(CentralFolderPath, AccName));
             File.Create(Path.Combine(CentralFolderPath, EmailName));

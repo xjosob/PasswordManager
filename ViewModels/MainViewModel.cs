@@ -66,12 +66,14 @@ namespace PasswordManager.ViewModels
             DeleteAccountCommand = new Command(DeleteAccount);
             ShowAccountInfoCommand = new Command(ShowAccContentWindow);
             SaveAccountsCommand = new Command(SaveAccounts);
-            LoadAccountsCommand = new Command(LoadAccounts)
+            LoadAccountsCommand = new Command(LoadAccounts);
             
 
             NewAccountWindow = new AddAccountWindow();
             EditAccountWindow = new EditAccountWindow();
             AccountViewer = new AccountContentViewer();
+
+            AccountDatabase.createdirthing();
 
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
