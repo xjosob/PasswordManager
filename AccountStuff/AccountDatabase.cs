@@ -11,7 +11,7 @@ namespace PasswordManager.AccountStuff
     {
         public static string CentralFolderPath = @"C:\PasswordsLocation";
 
-        public static string AccName = "accName.txt";
+        public static string AccNameName = "accName.txt";
         public static string EmailName = "email.txt";
         public static string UserName = "usrnm.txt";
         public static string PasswrdName = "psswrd.txt";
@@ -55,14 +55,66 @@ namespace PasswordManager.AccountStuff
                     NewExtraInfo5.Add(accounts[i].ExtraInfo5);
                 }
 
-                File.WriteAllLines(Path.Combine(directory, AccName), NewAccName);
+                File.WriteAllLines(Path.Combine(directory, AccNameName), NewAccName);
+                File.WriteAllLines(Path.Combine(directory, EmailName), NewEmail);
+                File.WriteAllLines(Path.Combine(directory, UserName), NewUserName);
+                File.WriteAllLines(Path.Combine(directory, PasswrdName), NewPassword);
+                File.WriteAllLines(Path.Combine(directory, DofBrthName), NewDateofBirth);
+                File.WriteAllLines(Path.Combine(directory, ScrtyInName), NewSecurityInfo);
+                File.WriteAllLines(Path.Combine(directory, ExtrIn1Name), NewExtraInfo1);
+                File.WriteAllLines(Path.Combine(directory, ExtrIn2Name), NewExtraInfo2);
+                File.WriteAllLines(Path.Combine(directory, ExtrIn3Name), NewExtraInfo3);
+                File.WriteAllLines(Path.Combine(directory, ExtrIn4Name), NewExtraInfo4);
+                File.WriteAllLines(Path.Combine(directory, ExtrIn5Name), NewExtraInfo5);
+            }
+        }
+
+        public static class AccountLoader
+        {
+            public static List<AccountStructure> LoadFiles() { return LoadFiles(CentralFolderPath); }
+            public static List<AccountStructure> LoadFiles(string directory)
+            {
+                List<string> accName = File.ReadAllLines(Path.Combine(directory, AccNameName)).ToList();
+                List<string> emailss = File.ReadAllLines(Path.Combine(directory, EmailName)).ToList();
+                List<string> usernam = File.ReadAllLines(Path.Combine(directory, UserName)).ToList();
+                List<string> passwrd = File.ReadAllLines(Path.Combine(directory, PasswrdName)).ToList();
+                List<string> dobrths = File.ReadAllLines(Path.Combine(directory, ScrtyInName)).ToList();
+                List<string> scrtyin = File.ReadAllLines(Path.Combine(directory, DofBrthName)).ToList();
+                List<string> extrin1 = File.ReadAllLines(Path.Combine(directory, ExtrIn1Name)).ToList();
+                List<string> extrin2 = File.ReadAllLines(Path.Combine(directory, ExtrIn2Name)).ToList();
+                List<string> exrin3 = File.ReadAllLines(Path.Combine(directory, ExtrIn3Name)).ToList();
+                List<string> extrin4 = File.ReadAllLines(Path.Combine(directory, ExtrIn4Name)).ToList();
+                List<string> extrin5 = File.ReadAllLines(Path.Combine(directory, ExtrIn5Name)).ToList();
+
+                List<AccountStructure> accounts = new List<AccountStructure>();
+
+                for(int i = 0; i < accName.Count; i++)
+                {
+                    AccountStructure am = new AccountStructure()
+                    {
+                        AccountName = accName[i],
+                        EmailAdress = emailss[i],
+                        UserName = usernam[i],
+                        Password = passwrd[i],
+                        DateOfBirth = dobrths[i],
+                        SecurityInfo = scrtyin[i],
+                        ExtraInfo1 = extrin1[i],
+                        ExtraInfo2 = extrin2[i],
+                        ExtraInfo3 = exrin3[i],
+                        ExtraInfo4 = extrin4[i],
+                        ExtraInfo5 = extrin4[i],
+                        
+                    };
+                }
+
+                return accounts;
             }
         }
 
 
         public static void createdirthing()
         {
-            File.Create(Path.Combine(CentralFolderPath, AccName));
+            File.Create(Path.Combine(CentralFolderPath, AccNameName));
             File.Create(Path.Combine(CentralFolderPath, EmailName));
             File.Create(Path.Combine(CentralFolderPath, UserName));
             File.Create(Path.Combine(CentralFolderPath, PasswrdName));

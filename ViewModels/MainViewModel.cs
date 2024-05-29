@@ -78,7 +78,7 @@ namespace PasswordManager.ViewModels
             NewAccountWindow.AddAccountCallback = this.AddAccount;
         }
 
-        private void SaveAccounts() { }
+        private void SaveAccounts() { AccountDatabase.AccountSaver.SaveFiles(Accounts); }
         private void LoadAccounts() { }
 
         private void ShowAccContentWindow()
