@@ -55,18 +55,31 @@ namespace PasswordManager.AccountStuff
                     NewExtraInfo5.Add(accounts[i].ExtraInfo5);
                 }
 
-                File.WriteAllLines(Path.Combine(directory, AccNameName), NewAccName);
-                File.WriteAllLines(Path.Combine(directory, EmailName), NewEmail);
-                File.WriteAllLines(Path.Combine(directory, UserName), NewUserName);
-                File.WriteAllLines(Path.Combine(directory, PasswrdName), NewPassword);
-                File.WriteAllLines(Path.Combine(directory, DofBrthName), NewDateofBirth);
-                File.WriteAllLines(Path.Combine(directory, ScrtyInName), NewSecurityInfo);
-                File.WriteAllLines(Path.Combine(directory, ExtrIn1Name), NewExtraInfo1);
-                File.WriteAllLines(Path.Combine(directory, ExtrIn2Name), NewExtraInfo2);
-                File.WriteAllLines(Path.Combine(directory, ExtrIn3Name), NewExtraInfo3);
-                File.WriteAllLines(Path.Combine(directory, ExtrIn4Name), NewExtraInfo4);
-                File.WriteAllLines(Path.Combine(directory, ExtrIn5Name), NewExtraInfo5);
+                WriteToFile(Path.Combine(directory, AccNameName), NewAccName);
+                WriteToFile(Path.Combine(directory, EmailName), NewEmail);
+                WriteToFile(Path.Combine(directory, UserName), NewUserName);
+                WriteToFile(Path.Combine(directory, PasswrdName), NewPassword);
+                WriteToFile(Path.Combine(directory, DofBrthName), NewDateofBirth);
+                WriteToFile(Path.Combine(directory, ScrtyInName), NewSecurityInfo);
+                WriteToFile(Path.Combine(directory, ExtrIn1Name), NewExtraInfo1);
+                WriteToFile(Path.Combine(directory, ExtrIn2Name), NewExtraInfo2);
+                WriteToFile(Path.Combine(directory, ExtrIn3Name), NewExtraInfo3);
+                WriteToFile(Path.Combine(directory, ExtrIn4Name), NewExtraInfo4);
+                WriteToFile(Path.Combine(directory, ExtrIn5Name), NewExtraInfo5);
             }
+
+            private static void WriteToFile(string path, List<string> contents)
+            {
+                using (StreamWriter writer = new StreamWriter(path, false))
+                {
+                    foreach (var line in contents)
+                    {
+                        writer.WriteLine(line);
+                    }
+                }
+            }
+
+
         }
 
         public static class AccountLoader
@@ -74,21 +87,21 @@ namespace PasswordManager.AccountStuff
             public static List<AccountStructure> LoadFiles() { return LoadFiles(CentralFolderPath); }
             public static List<AccountStructure> LoadFiles(string directory)
             {
-                List<string> accName = File.ReadAllLines(Path.Combine(directory, AccNameName)).ToList();
-                List<string> emailss = File.ReadAllLines(Path.Combine(directory, EmailName)).ToList();
-                List<string> usernam = File.ReadAllLines(Path.Combine(directory, UserName)).ToList();
-                List<string> passwrd = File.ReadAllLines(Path.Combine(directory, PasswrdName)).ToList();
-                List<string> dobrths = File.ReadAllLines(Path.Combine(directory, ScrtyInName)).ToList();
-                List<string> scrtyin = File.ReadAllLines(Path.Combine(directory, DofBrthName)).ToList();
-                List<string> extrin1 = File.ReadAllLines(Path.Combine(directory, ExtrIn1Name)).ToList();
-                List<string> extrin2 = File.ReadAllLines(Path.Combine(directory, ExtrIn2Name)).ToList();
-                List<string> exrin3 = File.ReadAllLines(Path.Combine(directory, ExtrIn3Name)).ToList();
-                List<string> extrin4 = File.ReadAllLines(Path.Combine(directory, ExtrIn4Name)).ToList();
-                List<string> extrin5 = File.ReadAllLines(Path.Combine(directory, ExtrIn5Name)).ToList();
+                List<string> accName = ReadFromFile(Path.Combine(directory, AccNameName));
+                List<string> emailss = ReadFromFile(Path.Combine(directory, EmailName));
+                List<string> usernam = ReadFromFile(Path.Combine(directory, UserName));
+                List<string> passwrd = ReadFromFile(Path.Combine(directory, PasswrdName));
+                List<string> dobrths = ReadFromFile(Path.Combine(directory, ScrtyInName));
+                List<string> scrtyin = ReadFromFile(Path.Combine(directory, DofBrthName));
+                List<string> extrin1 = ReadFromFile(Path.Combine(directory, ExtrIn1Name));
+                List<string> extrin2 = ReadFromFile(Path.Combine(directory, ExtrIn2Name));
+                List<string> exrin3 = ReadFromFile(Path.Combine(directory, ExtrIn3Name));
+                List<string> extrin4 = ReadFromFile(Path.Combine(directory, ExtrIn4Name));
+                List<string> extrin5 = ReadFromFile(Path.Combine(directory, ExtrIn5Name));
 
                 List<AccountStructure> accounts = new List<AccountStructure>();
 
-                for(int i = 0; i < accName.Count; i++)
+                for (int i = 0; i < accName.Count; i++)
                 {
                     AccountStructure am = new AccountStructure()
                     {
@@ -103,29 +116,53 @@ namespace PasswordManager.AccountStuff
                         ExtraInfo3 = exrin3[i],
                         ExtraInfo4 = extrin4[i],
                         ExtraInfo5 = extrin4[i],
-                        
                     };
+                    accounts.Add(am);
                 }
 
                 return accounts;
             }
-        }
+                private static List<string> ReadFromFile(string path)
+                {
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        List<string> lines = new List<string>();
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            lines.Add(line);
+                        }
+                        return lines;
+                    }
+                }
+            }
 
 
         public static void createdirthing()
         {
-            File.Create(Path.Combine(CentralFolderPath, AccNameName));
-            File.Create(Path.Combine(CentralFolderPath, EmailName));
-            File.Create(Path.Combine(CentralFolderPath, UserName));
-            File.Create(Path.Combine(CentralFolderPath, PasswrdName));
-            File.Create(Path.Combine(CentralFolderPath, ScrtyInName));
-            File.Create(Path.Combine(CentralFolderPath, DofBrthName));
-            File.Create(Path.Combine(CentralFolderPath, ScrtyInName));
-            File.Create(Path.Combine(CentralFolderPath, ExtrIn1Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtrIn2Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtrIn3Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtrIn4Name));
-            File.Create(Path.Combine(CentralFolderPath, ExtrIn5Name));
+            CreateFileIfNotExists(AccNameName);
+            CreateFileIfNotExists(EmailName);
+            CreateFileIfNotExists(UserName);
+            CreateFileIfNotExists(PasswrdName);
+            CreateFileIfNotExists(ScrtyInName);
+            CreateFileIfNotExists(DofBrthName);
+            CreateFileIfNotExists(ExtrIn1Name);
+            CreateFileIfNotExists(ExtrIn2Name);
+            CreateFileIfNotExists(ExtrIn3Name);
+            CreateFileIfNotExists(ExtrIn4Name);
+            CreateFileIfNotExists(ExtrIn5Name);
+        }
+
+        private static void CreateFileIfNotExists(string fileName)
+        {
+            string filePath = Path.Combine(CentralFolderPath, fileName);
+            if (!File.Exists(filePath))
+            {
+                using (File.Create(filePath))
+                {
+                    // The using block ensures the file stream is closed immediately after creation.
+                }
+            }
         }
     }
 }

@@ -148,6 +148,13 @@ namespace PasswordManager.ViewModels
         }
 
 
-        private void DeleteAccount() { }
+        private void DeleteAccount()
+        {
+            if (AccountSelected)
+            {
+                Accounts.RemoveAt(SelectedIndex);
+                SaveAccounts();
+            }
+        }
     }
 }
